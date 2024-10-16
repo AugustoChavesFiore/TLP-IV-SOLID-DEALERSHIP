@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { VehicleService } from "../services/vehicle.service";
+import { DiscountVehicleService } from "../services/discountVehicle.service";
 
 
 
 export class VehiclesController {
-    constructor(private readonly vehicleService: VehicleService) { };
+    constructor(private readonly vehicleService: DiscountVehicleService) { };
 
     handleErrors(error: any, res: Response) {
         if (error instanceof Error) {
@@ -65,6 +66,19 @@ export class VehiclesController {
         try {
             await this.vehicleService.delete(req.params.id);
             res.status(204).end();
+        } catch (error) {
+            this.handleErrors(error, res);
+        };
+    };
+
+    discountVehicle = async (req: Request, res: Response) => {
+        try {
+            const vehicle = await this.vehicleService.aplyDiscount(req.params.id);
+            if (vehicle) {
+                res.status(200).json(vehicle);
+            } else {
+                res.status(404).json({ error: "Vehicle not found" });
+            }
         } catch (error) {
             this.handleErrors(error, res);
         };
