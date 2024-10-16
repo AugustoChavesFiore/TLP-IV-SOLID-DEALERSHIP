@@ -4,7 +4,7 @@ import { IVehicle, IVehicleRepository } from "../interface/vehicle.interface";
 
 export class VehicleRepository implements IVehicleRepository {
     constructor(
-        private vehicleRepository: IVehicleRepository = vehicleRepository
+        private vehicleRepository: IVehicleRepository 
     ) { };
 
     async create(vehicle: IVehicle): Promise<IVehicle> {

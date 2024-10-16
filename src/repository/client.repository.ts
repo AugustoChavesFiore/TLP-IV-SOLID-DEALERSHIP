@@ -3,7 +3,7 @@ import { IClientRepository, IClient } from "../interface/client.interface";
 
 export class ClientRepository implements IClientRepository {
     constructor(
-        private clientRepository: IClientRepository = clientRepository
+        private clientRepository: IClientRepository 
     ) { };
 
     async create(client: IClient): Promise<IClient> {
