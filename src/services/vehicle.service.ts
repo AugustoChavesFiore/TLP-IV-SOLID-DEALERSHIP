@@ -1,12 +1,13 @@
 import { MongoVehicles } from "../database/mongoVehicles";
 import { IVehicle, IVehicleRepository } from "../interface/vehicle.interface";
+import { VehicleRepository } from "../repository/vehicles.repository";
 
 
 
 export class VehicleService {
 
     constructor(
-        private vehicleRepository: IVehicleRepository = new MongoVehicles()
+        private vehicleRepository: IVehicleRepository = new VehicleRepository(new MongoVehicles())
     ) { };
 
     async create(vehicle: IVehicle): Promise<IVehicle> {

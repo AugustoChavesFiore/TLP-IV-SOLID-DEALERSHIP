@@ -11,6 +11,10 @@ export class VehicleRepository implements IVehicleRepository {
         return this.vehicleRepository.create(vehicle);
     };
 
+    async findAll(): Promise<IVehicle[]> {
+        return this.vehicleRepository.findAll();
+    };
+
     async findById(id: string): Promise<IVehicle | null> {
         return this.vehicleRepository.findById(id);
 

@@ -1,11 +1,12 @@
 import { MongoClient } from "../database/mongoClients";
 import { IClientRepository, IClient } from "../interface/client.interface";
+import { ClientRepository } from "../repository/client.repository";
 
 
 
 export class ClientService {
     constructor(
-        private clientRepository: IClientRepository = new MongoClient()
+        private clientRepository: IClientRepository = new ClientRepository(new MongoClient())
     ) { };
 
     async create(client: IClient): Promise<IClient> {

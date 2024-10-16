@@ -10,6 +10,10 @@ export class ClientRepository implements IClientRepository {
         return this.clientRepository.create(client);
     };
 
+    async findAll(): Promise<IClient[]> {
+        return this.clientRepository.findAll();
+    };
+
     async findById(id: string): Promise<IClient | null> {
         return this.clientRepository.findById(id);
 
